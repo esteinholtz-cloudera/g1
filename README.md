@@ -2,12 +2,9 @@
 
 [Video Demo](https://github.com/user-attachments/assets/db2a221f-f8eb-48c3-b5a7-8399c6300243)
 
-This is an early prototype of using prompting strategies to improve the LLM's reasoning capabilities through o1-like reasoning chains. This allows the LLM to "think" and solve logical problems that usually otherwise stump leading models. Unlike o1, all the reasoning tokens are shown, and the app uses an open source model.
-
 g1 is experimental and being open sourced to help inspire the open source community to develop new strategies to produce o1-like reasoning. This experiment helps show the power of prompting reasoning in visualized steps, not a comparison to or full replication of o1, which uses different techniques. OpenAI's o1 is instead trained with large-scale reinforcement learning to reason using Chain of Thought, achieving state-of-the-art performance on complex PhD-level problems. 
 
 g1 demonstrates the potential of prompting alone to overcome straightforward LLM logic issues like the Strawberry problem, allowing existing open source models to benefit from dynamic reasoning chains and an improved interface for exploring them.
-
 
 ### How it works
 
@@ -41,46 +38,6 @@ Result:
 ![0.9 or 0.11 example](examples/math.png)
 
 
-### Quickstart
-
-To use the Streamlit UI, follow these instructions:
-
-~~~
-python3 -m venv venv
-~~~
-
-~~~
-source venv/bin/activate
-~~~
-
-~~~
-pip3 install -r requirements.txt
-~~~
-
-~~~
-export GROQ_API_KEY=gsk...
-~~~
-
-~~~
-streamlit run app.py
-~~~
-
----
-
-Alternatively, follow these additional instructions to use the Gradio UI:
-
-~~~
-cd gradio
-~~~
-
-~~~
-pip3 install -r requirements.txt
-~~~
-
-~~~
-python3 app.py
-~~~
-
 
 ### Prompting Strategy
 
@@ -103,8 +60,6 @@ json
 First, a persona is added:
 
 > You are an expert AI assistant that explains your reasoning step by step.
-
-
 
 Then, instructions to describe the expected step-by-step reasoning process while titling each reasoning step. This includes the ability for the LLM to decide if another reasoning step is needed or if the final answer can be provided.
 
@@ -135,14 +90,3 @@ In all-caps to improve prompt compliance by emphasizing the importance of the in
 Finally, after the problem is added as a user message, an assistant message is loaded to provide a standardized starting point for the LLM's generation.
 
 > Assistant: Thank you! I will now think step by step following my instructions, starting at the beginning after decomposing the problem
-
-
-### Top Forks
-
-* Huggingface Spaces Demo: [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/xylin/g1-demo)
-* Mult1: Using multiple AI providers to create o1-like reasoning chains ([GitHub Repository](https://github.com/tcsenpai/multi1))
-* thinkR: o1 like chain of thoughts with local LLMs in R ([GitHub Repository](https://github.com/eonurk/thinkR))
-
-### Credits
-
-This app was developed by [Benjamin Klieger](https://x.com/benjaminklieger).
