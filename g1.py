@@ -3,6 +3,10 @@ import time
 import os
 import json
 
+GROQ_MODEL=os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+# GROQ_MODEL="deepseek-r1-distill-llama-70b" does not support JSON
+
+
 client = groq.Groq()
 
 def make_api_call(messages, max_tokens, is_final_answer=False, custom_client=None):
@@ -14,7 +18,7 @@ def make_api_call(messages, max_tokens, is_final_answer=False, custom_client=Non
         try:
             if is_final_answer:
                 response = client.chat.completions.create(
-                    model="llama-3.1-70b-versatile",
+                    model=GROQ_MODEL,
                     messages=messages,
                     max_tokens=max_tokens,
                     temperature=0.2,
@@ -22,7 +26,7 @@ def make_api_call(messages, max_tokens, is_final_answer=False, custom_client=Non
                 return response.choices[0].message.content
             else:
                 response = client.chat.completions.create(
-                    model="llama-3.1-70b-versatile",
+                    model=GROQ_MODEL,
                     messages=messages,
                     max_tokens=max_tokens,
                     temperature=0.2,
